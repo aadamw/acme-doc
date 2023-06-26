@@ -1,22 +1,5 @@
+import { type SidebarNavItem } from "@/types/nav";
 import { siteConfig } from "./site";
-import * as Icons from "@/components/icons";
-
-export interface NavItem {
-  title: string;
-  href?: string;
-  disabled?: boolean;
-  external?: boolean;
-  icon?: keyof typeof Icons;
-  label?: string;
-}
-
-export interface NavItemWithChildren extends NavItem {
-  items: NavItemWithChildren[];
-}
-
-export interface MainNavItem extends NavItem {}
-
-export interface SidebarNavItem extends NavItemWithChildren {}
 
 export const navigationConfig = [
   {
@@ -40,11 +23,6 @@ export const docsNavigationConfig = [
       {
         title: "Introduction",
         href: "/docs",
-        items: [],
-      },
-      {
-        title: "Installation",
-        href: "/docs/installation",
         items: [],
       },
       {

@@ -5,7 +5,7 @@ export const siteConfig = {
   description:
     "Production ready documentation template with Next.js, MDX, TailwindCss",
   links: {
-    github: "https://github.com/acme",
+    github: "https://github.com/0xaddm",
     page: "https://acme.com",
   },
 };
