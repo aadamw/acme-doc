@@ -1,4 +1,3 @@
-import { buttonVariants } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -12,6 +11,7 @@ import {
   CardContent,
 } from "@/components/ui/card";
 import { features } from "@/config/features";
+import { buttonVariants } from "@/components/ui/button";
 
 export default function Home() {
   return (

@@ -2,10 +2,10 @@ import Link from "next/link";
 import { Doc } from "contentlayer/generated";
 
 import { cn } from "@/lib/utils";
-import * as Icons from "@/components/icons";
-import { buttonVariants } from "@/components/ui/button";
 import { docsNavigationConfig } from "@/config/nav";
 import { NavItemWithChildren, NavItem } from "@/types/nav";
+import * as Icons from "@/components/icons";
+import { buttonVariants } from "./ui/button";
 
 interface DocsPagerProps {
   doc: Doc;

@@ -4,15 +4,8 @@ import * as React from "react";
 import Image from "next/image";
 import { useMDXComponent } from "next-contentlayer/hooks";
 import { NpmCommands } from "@/types/unist";
-
 import { Event } from "@/lib/events";
 import { cn } from "@/lib/utils";
-import { Callout } from "@/components/callout";
-import { CodeBlockWrapper } from "@/components/code-block-wrapper";
-import { ComponentExample } from "@/components/component-example";
-import { ComponentSource } from "@/components/component-source";
-import { CopyButton, CopyNpmCommandButton } from "@/components/copy-button";
-
 import {
   Accordion,
   AccordionContent,
@@ -22,6 +15,11 @@ import {
 import { Alert, AlertTitle, AlertDescription } from "./ui/alert";
 import { AspectRatio } from "./ui/aspect-ratio";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
+import { Callout } from "./callout";
+import { CodeBlockWrapper } from "./code-block-wrapper";
+import { ComponentExample } from "./component-example";
+import { ComponentSource } from "./component-source";
+import { CopyButton, CopyNpmCommandButton } from "./copy-button";
 
 const components = {
   Accordion,
