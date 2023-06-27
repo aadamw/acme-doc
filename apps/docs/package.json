@@ -10,7 +10,8 @@
     "clean": "rm -rf .turbo && rm -rf node_modules"
   },
   "devDependencies": {
-    "@acme/tsconfig": "*"
+    "@acme/tsconfig": "*",
+    "@acme/eslint-plugin": "*"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.1.2",
