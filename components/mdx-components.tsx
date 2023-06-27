@@ -281,7 +281,11 @@ export function Mdx({ code }: MdxProps) {
 
   return (
     <div className="mdx">
-      <Component components={components} />
+      <Component
+        components={
+          components as React.ComponentProps<typeof Component>["components"] // TODO: Temporary solution
+        }
+      />
     </div>
   );
 }
