@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 import { cn } from "@/lib/utils";
-import { SidebarNavItem } from "@/config/nav";
+import { SidebarNavItem } from "@/types/nav";
 
 export interface DocsSidebarNavProps {
   items: SidebarNavItem[];
@@ -20,7 +20,7 @@ export function DocsSidebarNav({ items }: DocsSidebarNavProps) {
           <h4 className="mb-1 rounded-md px-2 py-1 text-sm font-semibold">
             {item.title}
           </h4>
-          {item?.items?.length && (
+          {item.items?.length && (
             <DocsSidebarNavItems items={item.items} pathname={pathname} />
           )}
         </div>
