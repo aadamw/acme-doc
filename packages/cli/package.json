@@ -1,5 +1,5 @@
 {
-  "name": "@0xaddm/docs",
+  "name": "@0xaddm/cli",
   "version": "0.0.1",
   "description": "Create production ready docs site made with Next.js",
   "publishConfig": {
