@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { cn } from "@/lib/utils";
 import * as Icons from "@/components/icons";
 import { siteConfig } from "@/config/site";
-import { navigationConfig } from "@/config/nav";
+import { docsNavigationConfig, navigationConfig } from "@/config/nav";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import React from "react";
 import { Button } from "./ui/button";
@@ -89,28 +89,27 @@ export function MobileNav() {
             )}
           </div>
           <div className="flex flex-col space-y-2">
-            {/* {docsNavigationConfig.map((item, index) => (
+            {docsNavigationConfig.map((item, index) => (
               <div key={index} className="flex flex-col space-y-3 pt-6">
                 <h4 className="font-medium">{item.title}</h4>
                 {item?.items?.length &&
                   item.items.map((item) => (
                     <React.Fragment key={item.href}>
-                      {!item.disabled &&
-                        (item.href ? (
-                          <MobileLink
-                            href={item.href}
-                            onOpenChange={setOpen}
-                            className="text-muted-foreground"
-                          >
-                            {item.title}
-                          </MobileLink>
-                        ) : (
-                          item.title
-                        ))}
+                      {item.href ? (
+                        <MobileLink
+                          href={item.href}
+                          onOpenChange={setOpen}
+                          className="text-muted-foreground"
+                        >
+                          {item.title}
+                        </MobileLink>
+                      ) : (
+                        item.title
+                      )}
                     </React.Fragment>
                   ))}
               </div>
-            ))} */}
+            ))}
           </div>
         </ScrollArea>
       </SheetContent>
