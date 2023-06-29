@@ -5,6 +5,9 @@ import Balancer from "react-wrap-balancer";
 import * as Icons from "@/components/icons";
 import { Mdx } from "@/components/mdx-components";
 import { DocsPager } from "@/components/pager";
+import { DashboardTableOfContents } from "@/components/toc";
+import { getTableOfContents } from "@/lib/toc";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 interface DocPageProps {
   params: {
@@ -46,6 +49,8 @@ export default async function DocsPage(props: DocPageProps) {
     notFound();
   }
 
+  const toc = await getTableOfContents(doc.body.raw);
+
   return (
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
       <div className="mx-auto w-full min-w-0">
@@ -73,6 +78,15 @@ export default async function DocsPage(props: DocPageProps) {
         </div>
         <DocsPager doc={doc} />
       </div>
+      {doc.toc && (
+        <div className="hidden text-sm xl:block">
+          <div className="sticky top-16 -mt-10 h-[calc(100vh-3.5rem)] overflow-hidden pt-6">
+            <ScrollArea className="pb-10">
+              <DashboardTableOfContents toc={toc} />
+            </ScrollArea>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

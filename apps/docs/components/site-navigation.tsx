@@ -1,5 +1,6 @@
 "use client";
 
+import * as React from "react";
 import Link, { LinkProps } from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 
@@ -8,7 +9,6 @@ import * as Icons from "@/components/icons";
 import { siteConfig } from "@/config/site";
 import { docsNavigationConfig, navigationConfig } from "@/config/nav";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import React from "react";
 import { Button } from "./ui/button";
 import { ScrollArea } from "./ui/scroll-area";
 
