@@ -167,10 +167,10 @@ const components = {
     __event__?: Event["name"];
   } & NpmCommands) => {
     return (
-      <>
+      <div className="w-full relative">
         <pre
           className={cn(
-            "mb-4 mt-6 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900",
+            "mb-4 mt-6 px-4 max-h-[650px] overflow-x-auto rounded-lg border bg-zinc-950 py-4 dark:bg-zinc-900",
             className
           )}
           {...props}
@@ -193,13 +193,13 @@ const components = {
             className={cn("absolute right-4 top-4", __withMeta__ && "top-16")}
           />
         )}
-      </>
+      </div>
     );
   },
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm",
+        "relative rounded bg-transparent py-[0.2rem] font-mono text-sm",
         className
       )}
       {...props}

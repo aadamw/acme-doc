@@ -7,6 +7,7 @@ import { codeImport } from "remark-code-import";
 import remarkGfm from "remark-gfm";
 import { getHighlighter, loadTheme } from "shiki";
 import { visit } from "unist-util-visit";
+import { rehypeNpmCommand } from "./lib/rehype-npm-command";
 
 /** @type {import('contentlayer/source-files').ComputedFields} */
 const computedFields = {
@@ -37,7 +38,7 @@ export const Doc = defineDocumentType(() => ({
       type: "boolean",
       default: true,
       required: false,
-    }
+    },
   },
   computedFields,
 }));
@@ -127,6 +128,7 @@ export default makeSource({
           }
         });
       },
+      rehypeNpmCommand,
       [
         rehypeAutolinkHeadings,
         {

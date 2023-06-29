@@ -1,0 +1,52 @@
+---
+title: Installation and usage
+description: Package installation instructions for Acme/flag package with example usage.
+---
+
+<Callout className="mt-2" title="Warning!">
+  This package is not yet in stable release. Use at your own risk.
+</Callout>
+
+<Steps>
+
+### Create your project
+
+Start by creating a new Next.js project if you don’t have one set up already. The most common approach is to use [Create Next App](https://www.nextjs.org).
+
+```bash
+npx create-next-app@latest my-project --typescript --eslint
+```
+
+### Install @acme/flag
+
+```bash
+npm install @acme/flag
+```
+
+### Initializing @acme/flag SDK client
+
+For full list of options see [api reference](/docs/api-reference).
+
+```ts
+import { AcmeSdk } from "@acme/flag";
+
+const acme = new AcmeSdk({ apiKey: process.env.ACME_API_KEY });
+```
+
+### Create new feature flag
+
+For full list of options see [api reference](/docs/api-reference). <br/>
+This will automatically create a new feature flag in our dashboard if it's not yet there.
+
+```ts
+const newDashboardFeature = await acme
+  .create({
+    name: "new-dashboard",
+    description: "New dashboard feature",
+  })
+  .percentage(50, true)
+  .custom("userId", "u_1234")
+  .env(ENV.PROD);
+```
+
+</Steps>

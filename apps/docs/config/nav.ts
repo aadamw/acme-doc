@@ -8,7 +8,7 @@ export const navigationConfig = [
   },
   {
     label: "Examples",
-    href: "/examples",
+    href: "/docs/examples",
   },
   {
     label: "GitHub",
@@ -28,6 +28,21 @@ export const docsNavigationConfig = [
       {
         title: "Changelog",
         href: "/docs/changelog",
+        items: [],
+      },
+    ],
+  },
+  {
+    title: "Examples",
+    items: [
+      {
+        title: "Introduction",
+        href: "/docs/examples",
+        items: [],
+      },
+      {
+        title: "Installation",
+        href: "/docs/examples/installation",
         items: [],
       },
     ],
