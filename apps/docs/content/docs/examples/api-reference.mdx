@@ -1,0 +1,103 @@
+---
+title: Api Reference
+description: Our API reference documentation on SDK Client allow you to build your app with @acme/flag.
+---
+
+### Authentication
+
+To authenticate with the API, you need to provide your API key in the `apiKey` field during AcmeSDK initialization.
+
+```ts
+import { AcmeSdk } from "@acme/flag";
+
+const acme = new AcmeSdk({ apiKey: process.env.ACME_API_KEY });
+```
+
+### Creating flags
+
+To create a flag, you need to provide a `name` and a `description` for the flag.
+
+```ts
+const userId = "u_1233";
+
+const flag = await acme.create({
+  key: userId // This key will ensure that the flag will return the same value for the same key everytime.
+  name: "my-flag",
+  description: "My flag description",
+});
+```
+
+This will create a new flag in our dashboard with the name `my-flag` and the description `My flag description`. <br/>
+If it already exists, it will return the existing flag.
+
+### Adding conditions to a flag
+
+```ts
+const flag = await acme
+  .create({
+    key: "u_1233"
+    name: "my-flag",
+    description: "My flag description",
+  })
+  .percentage(50, true)
+  .custom({ key: "userId", value: "u_1233", return: false })
+  .env(ENV.PROD);
+```
+
+### Usage
+
+```tsx
+export default async function RootLayout (props: {children: React.ReactNode}) {
+  const flag = await acme
+    .create({
+      key: "u_1233"
+      name: "show-header",
+      description: "Displays header",
+    })
+    .percentage(50, true)
+    .custom({ key: "userId", value: "u_1233", return: false })
+    .env(ENV.PROD);
+
+  return <>
+          {flag.enabled && <Header>}
+          {props.children}
+        <>
+  }
+```
+
+### Advance usage
+
+Passing a return value to `percentage` or `custom` will use that return value instead fetching it from dashboard. <br/> Values in dashboard will be locked and cannot be changed.
+
+```ts
+const userId = "u_1233";
+const flag = await acme
+  .create({
+    key: userId,
+    name: "my-flag",
+    description: "My flag description",
+  })
+  .percentage(50, true)
+  .custom({ key: "userId", value: "u_1233", return: false })
+  .env(ENV.PROD);
+```
+
+### How flags conditions are evaluated
+
+```ts
+const flag = await acme
+  .create({/.../})
+  .percentage(50, true) // 50% of users will see get the true value. If this condition is met then execution will stop here.
+  .custom({ key: "userId", value: "u_1233", return: false }) // If the user id is u_1233 then the value will be false. If this condition is met then execution will stop here.
+  .env(ENV.PROD); // If the environment is prod then the value will be true.
+```
+
+#### Type references
+
+| Name           | Type                                                                                       | Description              |
+| -------------- | ------------------------------------------------------------------------------------------ | ------------------------ |
+| `AcmeType`     | `{ create: CreateType, percentage: PercentageType, custom: CustomType, enabled: boolean }` | Acme SDK instance        |
+| `create()`     | `({key: string or string[], name: string, description: string}) => AcmeType`               | Creates feature flag     |
+| `percentage()` | `(percentage: number, return?: boolean) => AcmeType`                                       | Add percentage condition |
+| `custom()`     | `({key: string, value: string or string[] or null, return?: boolean}) => AcmeType`         | Add custom condition     |
+| `env()`        | `(env: string) => AcmeType`                                                                | Add env condition        |

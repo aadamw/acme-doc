@@ -35,17 +35,18 @@ const acme = new AcmeSdk({ apiKey: process.env.ACME_API_KEY });
 
 ### Create new feature flag
 
-For full list of options see [api reference](/docs/api-reference). <br/>
+For full list of options see [api reference](/docs/examples/api-reference). <br/>
 This will automatically create a new feature flag in our dashboard if it's not yet there.
 
 ```ts
 const newDashboardFeature = await acme
   .create({
+    key: "new-dashboard",
     name: "new-dashboard",
     description: "New dashboard feature",
   })
   .percentage(50, true)
-  .custom("userId", "u_1234")
+  .custom({ key: "userId", value: "u_1233", return: false })
   .env(ENV.PROD);
 ```
 

@@ -199,7 +199,7 @@ const components = {
   code: ({ className, ...props }: React.HTMLAttributes<HTMLElement>) => (
     <code
       className={cn(
-        "relative rounded bg-transparent py-[0.2rem] font-mono text-sm",
+        "relative rounded py-[0.2rem] font-mono text-sm",
         className
       )}
       {...props}

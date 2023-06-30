@@ -45,6 +45,11 @@ export const docsNavigationConfig = [
         href: "/docs/examples/installation",
         items: [],
       },
+      {
+        title: "Api Reference",
+        href: "/docs/examples/api-reference",
+        items: [],
+      },
     ],
   },
 ] satisfies SidebarNavItem[];
